@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('cloning') {
+            steps {
+                echo 'cloning the code'
+                git branch: 'main', url: 'https://github.com/Sk-Nagul-09/Project-1.git'
+            }
+        }
+        
+        stage('docker image') {
+            steps {
+                echo 'creating docker image'
+                sh 'docker build -t basic_img:${BUILD_NUMBER} .'
+            }
+        }
+        
+        stage('docker run') {
+            steps {
+                echo 'Running the container'
+                sh 'docker stop basic_img || true'
+                sh 'docker rm basic_img || true'
+                sh 'docker run -d --name cont_1 -p 8082:8082 basic_img:${BUILD_NUMBER}'
+            }
+        }
+    }
+}
