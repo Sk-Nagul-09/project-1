@@ -21,7 +21,7 @@ pipeline {
                 echo 'Running the container'
                 sh 'docker stop basic_img || true'
                 sh 'docker rm basic_img || true'
-                sh 'docker run -d --name cont_${BUILD_NUMBER} -p 8082:8082 basic_img:${BUILD_NUMBER}'
+                sh 'docker run -d --name cont_${BUILD_NUMBER} -p 808${BUILD_NUMBER}:808${BUILD_NUMBER} basic_img:${BUILD_NUMBER}'
             }
         }
     }
