@@ -1,5 +1,5 @@
 FROM amazonlinux:latest 
-LABEL maintainer="MADHU KIRAN <devopstraininghub@gmail.com>" 
+LABEL maintainer="SK-NAGUL <sknagul.awsdevops@gmail.com>" 
 RUN yum update -y 
 RUN yum install python3 python3-pip pip -y 
 RUN pip install flask
